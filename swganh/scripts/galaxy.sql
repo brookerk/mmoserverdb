@@ -48,9 +48,11 @@ CREATE TABLE `galaxy` (
   `character_retention` int(4) NOT NULL COMMENT 'Character retention period (Administrative Feature)',
   `items_retention` int(4) NOT NULL COMMENT 'Item retention period (Administrative Feature)',
   `account_retention` int(4) NOT NULL COMMENT 'Account retention period (Administrative Feature)',
-  `status` int(10) unsigned NOT NULL default '0',
-  `last_update` datetime NOT NULL,
+  `status` int(10) unsigned NOT NULL default '0' COMMENT 'Current Galaxy Status (0-offline 1-loading 2-online 3-locked)',
+  `last_update` datetime NOT NULL COMMENT 'Last Galaxy Update',
   `global_Tick_Count` bigint(20) unsigned NOT NULL COMMENT 'Global server tickcount',
+  `characters_Allowed` int(4) unsigned NOT NULL COMMENT 'Maximum Characters Allowed',
+  `unlimited_Characters` int(4) unsigned NOT NULL COMMENT 'Unlimited Characters 1-yes 0-no',
   PRIMARY KEY  (`galaxy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -59,8 +61,8 @@ CREATE TABLE `galaxy` (
 --
 
 /*!40000 ALTER TABLE `galaxy` DISABLE KEYS */;
-INSERT INTO `galaxy` (`galaxy_id`,`name`,`address`,`port`,`pingport`,`population`,`character_retention`,`items_retention`,`account_retention`,`status`,`last_update`,`global_Tick_Count`) VALUES
- (2,'SWGANH - Test Center','127.0.0.1',44991,44992,0,180,1,180,0,NOW(),0);
+INSERT INTO `galaxy` (`galaxy_id`,`name`,`address`,`port`,`pingport`,`population`,`character_retention`,`items_retention`,`account_retention`,`status`,`last_update`,`global_Tick_Count`, `characters_Allowed`, `unlimited_Characters`) VALUES
+ (2,'SWGANH - Test Center','127.0.0.1',44991,44992,0,180,1,180,0,NOW(),0, 2, 0);
 /*!40000 ALTER TABLE `galaxy` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
